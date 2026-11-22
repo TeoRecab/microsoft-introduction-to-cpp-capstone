@@ -11,3 +11,4 @@ bool DateDifferenceCalculator();
 
 //from other_turils.cpp (many files need this)
 std::optional<short> ParseValidInput(const std::string& input);
+std::optional<double> ParseValidDouble(const std::string &input);

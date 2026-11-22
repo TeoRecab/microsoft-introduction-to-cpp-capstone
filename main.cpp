@@ -2,7 +2,7 @@
  * DONE: word and character counter
  *        seems to work <- using std::getline
  * TODO: statistical calculator
- * TODO: simple file info utility
+ * DONE: simple file info utility
  * TODO: date difference calculator
  */
 

@@ -13,7 +13,7 @@ namespace fs = std::filesystem;
 void DisplayFileType(fs::path file_str);
 
 bool SimpleFileInfo() {
-  std::cout << "\n********** Simple Fiele Information**********";
+  std::cout << "\n********** Simple File Information**********";
   std::cout << "\nThis utility will inform of a file's last used date, "
                "permissions, type and size. \nPlease enter a file path or "
                "'exit' to return to the main menu."
