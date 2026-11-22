@@ -1,0 +1,6 @@
+#builds
+build/
+
+#any manually built object
+*.o
+*.d
