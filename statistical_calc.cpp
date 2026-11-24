@@ -18,6 +18,9 @@ double CalculateStandardDeviation(const std::vector<double> &v, double &mean);
 bool StatisticalCalculator() {
   auto d_min = std::numeric_limits<double>::lowest;
   auto d_max = std::numeric_limits<double>::max();
+  std::string input_line;
+  double sample;
+  std::vector<double> samples;
 
   std::cout << "\n********** Statistical Calculator **********";
   std::cout
@@ -34,12 +37,10 @@ bool StatisticalCalculator() {
   std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
   // get samples from input
-  std::string input_line;
-  double sample;
-  std::vector<double> samples;
   // loop for input until exit order or done order
   while (true) {
-    if (!std::getline(std::cin, input_line) || input_line == "exit") {
+    std::getline(std::cin, input_line);
+    if (input_line == "exit") {
       return false; // exit order
     }
     if (input_line == "done") {
@@ -47,11 +48,13 @@ bool StatisticalCalculator() {
     }
     if ((sample = *ParseValidDouble(input_line))) {
       samples.push_back(sample);
+      std::cout << "Taken the value: " << sample;
+    } else {
+      std::cout << "INVALID INPUT, number not taken";
     }
-    std::cout << "Taken the value: " << sample
-              << ". Write another value, 'done' to execute the calculationsor "
-                 "'exit' to return to the main menu."
-              << std::endl;
+    std::cout << ". \nWrite another value, 'done' to execute the calculationsor "
+       "'exit' to return to the main menu."
+    << std::endl;
   }
 
   // do the math
@@ -67,11 +70,11 @@ bool StatisticalCalculator() {
   CalculateMedianAndMode(samples, ari_mean, median, mode);
 
   // print results
-  std::cout << "The sorted valyes are:\n";
+  std::cout << "\nThe sorted values are:\n";
   for (size_t i = 0; i < samples.size(); i++) {
-    std::cout << i + 1 << ": " << samples[i] << "\n";
+    std::cout << i + 1 << ": " << samples[i] << ",\n";
   }
-  std::cout << "The arithmetic mean is: " << ari_mean << "\n";
+  std::cout << "\nThe arithmetic mean is: " << ari_mean << "\n";
   std::cout << "The geometric mean is: " << geo_mean << "\n";
   std::cout << "The harmonic mean is: " << har_mean << "\n";
   std::cout << "The madian is: " << median << "\n";

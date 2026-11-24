@@ -7,7 +7,7 @@ LDLIBS   :=
 TARGET := utils_cpp_capstone
 SRCS   := main.cpp \
           simple_file_info.cpp \
-          date_diff_calc.cpp \
+          prime_checker.cpp \
           other_utils.cpp \
           statistical_calc.cpp \
           word_and_char_counter.cpp

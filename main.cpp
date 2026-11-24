@@ -1,9 +1,9 @@
 /* capstone project
  * DONE: word and character counter
  *        seems to work <- using std::getline
- * TODO: statistical calculator
+ * DONE: statistical calculator
  * DONE: simple file info utility
- * TODO: date difference calculator
+ * TODO: prime number checker
  */
 
 #include "utils.h"
@@ -17,7 +17,7 @@ std::optional<short> PrintMenu();
 int main() {
   std::optional<short> parsed_input = std::nullopt;
 
-  std::cout << "Welcome to the utilitApp\n";
+  std::cout << "Welcome to the utilitApp\n Please choose an option by number:\n\n";
   bool exit = false;
   while (!exit) {
     //get a valid input from the menu
@@ -34,7 +34,7 @@ int main() {
         SimpleFileInfo();
         break;
       case 4:
-        DateDifferenceCalculator();
+        PrimeNumberChecker();
         break;
       case 5:
         std::cout << "exiting..." << std::endl;
@@ -52,11 +52,11 @@ std::optional<short> PrintMenu() {
   std::cout << "1: Word and Character counter\n";
   std::cout << "2: Statistical Calculator\n";
   std::cout << "3: Simple File Info\n";
-  std::cout << "4: Date difference Calculator\n";
+  std::cout << "4: Prime Number Checker\n";
   std::cout << "5: Exit" << std::endl;
 
   std::string input;
   std::cin >> input;
-  return ParseValidInput(input);
+  return ParseValidShort(input);
 }
 

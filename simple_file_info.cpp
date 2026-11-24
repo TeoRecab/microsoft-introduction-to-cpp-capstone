@@ -2,8 +2,8 @@
 
 #include <algorithm>
 #include <charconv>
-#include <filesystem>
 #include <chrono>
+#include <filesystem>
 #include <format>
 #include <iostream>
 #include <unordered_map>
@@ -47,15 +47,14 @@ bool SimpleFileInfo() {
   if (ec) {
     std::cerr << "Could not get file size: " << ec.message() << '\n';
   }
+  std::cout << "Size: " << size << " bytes\n";
 
   // get file last touch time
   fs::file_time_type t = fs::last_write_time(file_p, ec);
   auto sys = std::chrono::clock_cast<std::chrono::system_clock>(t);
-  std::cout << std::format("Last modified on: {:%Y-%m-%d %H:%M:%S}\n",
+  // Display lt time
+  std::cout << std::format("Last modified on: {:%Y-%m-%d %H:%M:%S}\n\n",
                            std::chrono::floor<std::chrono::seconds>(sys));
-
-  // print info
-  std::cout << "Size: " << size << " bytes\n\n";
 
   return true;
 }
@@ -82,7 +81,7 @@ void DisplayFileType(fs::path p) {
 
   auto this_ext = types.find(ext);
   if (this_ext != types.end()) {
-    std::cout << "This is a " << this_ext->second << ".\n";
+    std::cout << "\nThis is a " << this_ext->second << ".\n";
   } else if (ext.empty()) {
     std::cout << "File has no extension\n";
   } else {
